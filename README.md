@@ -6,6 +6,7 @@
 - Spring Security
 - Spring Web
 - Oauth2
+
 ```xml
         <dependency>
 			<groupId>org.springframework.security</groupId>
@@ -41,6 +42,7 @@ create database costa;
 ```
 
 ### yml 설정
+```yml
 server:
   port: 8080
   servlet:
@@ -81,3 +83,4 @@ spring:
 
 file: 사진을 업로드하면/ 배포를 하면 리눅스에서 경로를 설정해주면됨.
   path: C:/src/instagram/src/main/resources/upload/
+```
