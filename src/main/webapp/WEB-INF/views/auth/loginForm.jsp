@@ -20,11 +20,11 @@
                 <article class="login__form__container">
                     <div class="login__form">
                         <h1><img src="/images/logo.jpg" alt=""></h1>
-                        <div class="login__input">
-                            <input type="text" name="id" placeholder="전화번호, 사용자 이름 또는 이메일">
+                        <form class="login__input" action="/login" method="post">
+                            <input type="text" name="username" placeholder="유저네임">
                             <input type="password" name="password" id="password" placeholder="비밀번호">
                             <button>로그인</button>
-                        </div>
+                        </form>
                         <div class="login__horizon">
                             <div class="br"></div>
                             <div class="or">또는</div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="login__register">
                         <span>계정이 없으신가요?</span>
-                        <a href="./join.html">가입하기</a>
+                        <a href="/auth/joinForm">가입하기</a>
                     </div>
                 </article>
             </section>

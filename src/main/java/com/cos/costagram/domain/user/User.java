@@ -12,8 +12,14 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 public class User {
@@ -34,7 +40,7 @@ public class User {
 	private String phone;
 	private String gender;
 	
-	private String profileImage; // 프로필 이미지 경로로 설정
+	private String profileImageUrl; // 프로필 이미지 경로로 설정
 	
 	private String provider; // 제공자, google, facebook, naver 구분 / provider가 null 이면 기본 로그인
 	
