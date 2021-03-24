@@ -84,3 +84,12 @@ spring:
 file: 사진을 업로드하면/ 배포를 하면 리눅스에서 경로를 설정해주면됨.
   path: C:/src/instagram/src/main/resources/upload/
 ```
+
+### 태그라이브러리
+```jpa
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
+```

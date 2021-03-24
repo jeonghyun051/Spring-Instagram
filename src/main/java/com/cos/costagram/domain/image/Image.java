@@ -42,8 +42,9 @@ public class Image {
 	private User user; // 자식이 외래키의 주인, 한명의 유저는 여러개의 이미지를 만들 수 있음
 	
 	// 양방향 매핑 , 데베에 생기면 안됨
+	
 	@OneToMany(mappedBy = "image") // 외래키의 변수명을 적으면 된다. 기본 LAZY
-	private List<Tag> tags;
+	private List<Tag> tags; // * 컨틀롤러에서는 잭슨이 발동하지 않아서 갯터가 실행이안됨 무한반복이 안됨
 	
 	//라이크 정보도 가지고 있어야함, 그래야 버튼을 눌러서 빨간색이 뜨게 하고 유지할수있음
 	@OneToMany(mappedBy = "image") // 외래키의 변수명을 적으면 된다. 기본 LAZY

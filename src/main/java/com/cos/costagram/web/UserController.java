@@ -16,4 +16,6 @@ public class UserController {
 	public String profileSetting(@PathVariable int id) {
 		return "user/prifileSetting";
 	}
+	
+	
 }

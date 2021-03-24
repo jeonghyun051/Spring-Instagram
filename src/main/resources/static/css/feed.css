@@ -113,6 +113,13 @@
   cursor: pointer;
 }
 
+/*태그영역*/
+.sl__item__contents__tags{
+  height: 40px;
+  padding: 5px 10px;  
+  color: #0080ff;
+}
+
 /*게시물 내용*/
 .main
   .container

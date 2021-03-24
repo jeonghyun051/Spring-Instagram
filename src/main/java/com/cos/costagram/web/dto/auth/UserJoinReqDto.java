@@ -1,4 +1,4 @@
-package com.cos.costagram.web.auto.dto;
+package com.cos.costagram.web.dto.auth;
 
 import com.cos.costagram.domain.user.User;
 
