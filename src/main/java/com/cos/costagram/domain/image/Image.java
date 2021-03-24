@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.cos.costagram.domain.comment.Comment;
 import com.cos.costagram.domain.likes.Likes;
 import com.cos.costagram.domain.tag.Tag;
 import com.cos.costagram.domain.user.User;
@@ -50,6 +51,10 @@ public class Image {
 	
 	// follow 정보
 	// comment (댓글)
+	@OneToMany(mappedBy = "image")
+	private List<Comment> comments;
+	
+	
 	
 	@CreationTimestamp // 자동으로 현재시간 담김
 	private Timestamp createDate;
