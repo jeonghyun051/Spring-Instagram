@@ -7,19 +7,8 @@
   src: url(../fonts/billabong.ttf);
 }
 
-/* common */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  outline: none;
-}
-button {
-  cursor: pointer;
-}
-.container {
+
+.profileContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +23,7 @@ button {
   display: flex;
   margin: 54px 0 44px;
 }
-.profile > .container {
+.profile > .profileContainer {
   padding: 30px 20px 0;
 }
 .profile .profile-left,
@@ -114,66 +103,66 @@ button {
   height: 130px;
   margin-bottom: 44px;
 }
-.story .container {
+.story .profileContainer {
   padding: 0 48px;
   display: flex;
   justify-content: flex-start;
 }
-.story .container .story-item {
+.story .profileContainer .story-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 24px;
   cursor: pointer;
 }
-.story .container .story-item .stroy-img {
+.story .profileContainer .story-item .stroy-img {
   width: 87px;
   height: 87px;
   padding: 3px;
   border: 1px solid gainsboro;
   border-radius: 50%;
 }
-.story .container .story-item .stroy-img img {
+.story .profileContainer .story-item .stroy-img img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
-.story .container .story-item .story-name {
+.story .profileContainer .story-item .story-name {
   padding-top: 10px;
 }
-.story .container .story-item .story-name p {
+.story .profileContainer .story-item .story-name p {
   font-size: 14px;
   font-weight: bold;
 }
 
 /* Tab-controller */
-.gallery .container .controller {
+.gallery .profileContainer .controller {
   height: 20px;
   width: 100%;
   border-top: 1px solid #dbdbdb;
 }
-.gallery .container .controller .con-list .tab-item {
+.gallery .profileContainer .controller .con-list .tab-item {
   margin-right: 60px;
   height: 100%;
   line-height: 53px;
 }
-.gallery .container .controller .con-list {
+.gallery .profileContainer .controller .con-list {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.gallery .container .controller .con-list a {
+.gallery .profileContainer .controller .con-list a {
   color: rgba(var(--f52, 142, 142, 142), 1);
   display: inline-block;
   height: 100%;
 }
-.gallery .container .controller .con-list i {
+.gallery .profileContainer .controller .con-list i {
   font-size: 8px;
   margin-right: 6px;
   vertical-align: 1px;
 }
-.gallery .container .controller .con-list span {
+.gallery .profileContainer .controller .con-list span {
   font-size: 12px;
 }
 
@@ -213,7 +202,7 @@ button {
   background: rgba(0, 0, 0, 0.6);
   opacity: 1;
 }
-#tab-content #tab-1-content .tab-1-content-inner .img-box .comment a {
+#tab-content #tab-1-content .tab-1-content-inner .img-box .comment a,#tab-content #tab-1-content .tab-1-content-inner .img-box .comment a span{
   color: #fff;
 }
 #tab-content #tab-1-content .tab-1-content-inner .img-box .comment a i {
@@ -224,28 +213,28 @@ button {
 .popular {
   width: 100%;
 }
-.popular .container {
+.popular .profileContainer {
   flex-direction: column;
 }
-.popular .container .popular-gallery {
+.popular .profileContainer .popular-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
   margin-bottom: 30px;
 }
-.popular .container .popular-gallery.popular-top .p-img-box {
+.popular .profileContainer .popular-gallery.popular-top .p-img-box {
   width: 100%;
   min-height: 292px;
 }
-.popular .container .popular-gallery.popular-top .p-img-box:nth-child(2) {
+.popular .profileContainer .popular-gallery.popular-top .p-img-box:nth-child(2) {
   grid-column: 2/4;
   grid-row: 1/3;
 }
-.popular .container .popular-gallery .p-img-box {
+.popular .profileContainer .popular-gallery .p-img-box {
   width: 292px;
   min-height: 292px;
 }
-.popular .container .popular-gallery .p-img-box img {
+.popular .profileContainer .popular-gallery .p-img-box img {
   display: block;
   width: 100%;
   height: 100%;
@@ -459,7 +448,7 @@ button {
 
 /* Media */
 @media screen and (max-width: 935px) {
-  .container {
+  .profileContainer {
     width: 100%;
   }
 }

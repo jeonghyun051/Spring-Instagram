@@ -16,6 +16,7 @@
   top: 0;
   z-index: 10;
 }
+
 .header .container {
   display: flex;
   justify-content: space-between;
@@ -24,22 +25,15 @@
   margin: 0 auto;
   height: 100%;
 }
+
 .logo {
-  font-family: "is", serif;
-  font-size: 40px;
-  color: #000;
   display: flex;
   align-items: center;
 }
 .logo img {
   width: 120px;
 }
-.input-search input {
-  height: 28px;
-  width: 200px;
-  text-align: center;
-  border: 1px solid gainsboro;
-}
+
 .navi > .navi-list {
   display: flex;
 }
@@ -53,25 +47,6 @@
   font-size: 22px;
   color: #808080;
   margin-top: 4px;
-}
-.navi > .navi-list .navi-item a .my-account {
-  display: flex;
-  width: 28px;
-  height: 28px;
-  padding: 2px;
-  border-radius: 50%;
-  position: relative;
-}
-.navi > .navi-list .navi-item a .my-account img {
-  width: 100%;
-  border-radius: 50%;
-}
-
-@keyframes loading {
-  100% {
-    stroke: #cd476b;
-    transform: rotate(200deg);
-  }
 }
 
 @media screen and (max-width: 935px) {
