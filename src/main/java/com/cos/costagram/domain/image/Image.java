@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -60,5 +61,10 @@ public class Image {
 	@CreationTimestamp // 자동으로 현재시간 담김
 	private Timestamp createDate;
 	
-	//이미지 샐렉하면 
+	@Transient // javax 꺼임, 칼럼이 만들어지지 않는다.
+	private int likeCount;
+	
+	@Transient
+	private boolean likeState;
+	 
 }

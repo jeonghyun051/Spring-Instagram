@@ -1,40 +1,16 @@
 @import "header.css";
 @import "footer.css";
 
-/* Fonts */
-@font-face {
-  font-family: is;
-  src: url(../fonts/billabong.ttf);
-}
-
-/* common */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  outline: none;
-}
-button {
-  cursor: pointer;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 935px;
-  margin: 0 auto;
-  height: 100%;
-  padding: 0 30px;
-}
-main {
+/*업로드페이지 중앙배치*/
+.uploadContainer{
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 150px;
 }
+
+/*업로드섹션*/
 .upload {
   width: 600px;
   display: flex;
@@ -42,13 +18,18 @@ main {
   padding: 10px 40px;
   border: 1px solid #dbdbdb;
 }
+
+/*업로드박스 로고*/
 .upload .upload-top {
   text-align: center;
 }
+
+/*업로드박스 이미지*/
 .upload .upload-top img {
   width: 200px;
   margin: 10px 0 20px;
 }
+
 .upload .upload-top p {
   text-align: center;
   position: relative;
@@ -73,29 +54,41 @@ main {
   height: 1px;
   background: #222;
 }
+
+/*업로드 폼*/
 .upload .upload-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/*업로드 인풋*/
 .upload .upload-form input[type="file"] {
   margin: 30px 0;
   text-align: left;
 }
+
+/*업로드 이미지 박스*/
 .upload .upload-form .upload-img {
   width: 400px;
   height: 300px;
   margin-bottom: 5px;
 }
+
+/*업로드 이미지*/
 .upload .upload-form .upload-img img {
   width: 100%;
   height: 100%;
 }
+
+/*이미지에 대한 설명박스*/
 .upload .upload-form .upload-form-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/*이미지에 대한 설명인풋 + 버튼*/
 .upload .upload-form .upload-form-detail input,
 .upload .upload-form .upload-form-detail button {
   width: 340px;
@@ -122,3 +115,4 @@ main {
   border-top: 1px solid #dbdbdb;
   color: #0095f6;
 }
+

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>인덱스파일입니다.</h1>
+<h1>인덱스페이지</h1>
 </body>
 </html>
