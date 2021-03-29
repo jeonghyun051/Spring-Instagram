@@ -13,6 +13,5 @@ public interface ImageRepository extends JpaRepository<Image, Integer>{
 	@Query(value = "select * from image where userId in (select toUserId from follow where fromUserId = :principalId) order by id desc", nativeQuery = true)
 	List<Image> mFollowFeed(int principalId); 
 
-	@Query(value =  "select count(*) from image where userId = :userId", nativeQuery = true)
-	int mImageCount(int userId); 
+
 }

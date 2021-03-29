@@ -27,12 +27,12 @@ public class UserService {
          return new IllegalAccessException();
       });
       
-      int imageCount = imageRepository.mImageCount(userId);
+
       int followCount = followRepository.mFollowCount(userId);
-      boolean followState = followRepository.mFollowState(userId, principalId);
+      int followState = followRepository.mFollowState(principalId,userId);
       
-      userProfileRespDto.setFollowState(followState);
-      userProfileRespDto.setImageCount(imageCount);
+      userProfileRespDto.setFollowState(followState == 1); // 내가 팔로우하고 있는지 상태
+      userProfileRespDto.setImageCount(userEntity.getImages().size()); // 내가 팔로우하고 있는 카운터
       userProfileRespDto.setFollowCount(followCount);
       userProfileRespDto.setUser(userEntity);
       

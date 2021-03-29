@@ -19,10 +19,11 @@ public interface FollowRepository extends JpaRepository<Follow, Integer>{
 	@Query(value = "DELETE FROM follow WHERE fromUserId = :fromUserId AND toUserId=:toUserId", nativeQuery = true)
 	int mUnFollow(int fromUserId, int toUserId); // prepareStatement updateQuery() => -1, 0, 1 응답의 결과 그래서 int로 받기
 	
-	@Query(value = "select count(*) from follow where toUserId = :userId", nativeQuery = true)
+	@Query(value = "select count(*) from follow where fromUserId = :principalId AND toUserId = :userId",nativeQuery = true)
+	int mFollowState(int principalId, int userId);
+	
+	@Query(value = "select count(*) from follow where fromUserId = :userId", nativeQuery = true)
 	int mFollowCount(int userId);
 	
-	@Query(value = "select if(toUserId=:toUserId,'true', 'false') as boolean from follow where fromUserId=:fromUserId",nativeQuery = true)
-	boolean mFollowState(int fromUserId, int toUserId);
 
 }
