@@ -1,7 +1,6 @@
 package com.cos.costagram.domain.likes;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.cos.costagram.domain.image.Image;
-import com.cos.costagram.domain.tag.Tag;
 import com.cos.costagram.domain.user.User;
 
 import lombok.AllArgsConstructor;
@@ -27,6 +27,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
+@Table(
+		name="likes",
+		uniqueConstraints={
+			@UniqueConstraint(	
+				name = "likes_uk",
+				columnNames={"imageId","userId"}
+			)
+		}
+	) // 한사람은 이미지하나를 한번만 좋아요 할 수 있음 유니크하게 해야함
 public class Likes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

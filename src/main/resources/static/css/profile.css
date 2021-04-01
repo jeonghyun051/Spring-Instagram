@@ -384,7 +384,7 @@
   display: flex;
   align-items: center;
 }
-.modal-follow .follower .follower-list .follower__item .follower__btn button {
+/* .modal-follow .follower .follower-list .follower__item .follower__btn button {
   border: 0;
   background-color: #0095f6;
   color: #fff;
@@ -392,17 +392,18 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-}
+} */
 
 .cta {
   margin-right: 10px;
-  padding: 5px 9px;
+  padding: 10px 10px;
   border: 1px solid rgba(var(--ca6, 219, 219, 219), 1);
   border-radius: 4px;
   color: #262626;
   font-weight: bold;
   background: transparent;
 }
+
 .cta.blue {
   background: #0095f6 !important;
   color: #fff !important;

@@ -29,12 +29,23 @@ spring:
   servlet: 
     multipart:
       enabled: true
-      max-file-size: 2MB
+      max-file-size: 6MB
 
-  security: 
+  security:
+    oauth2:
+      client:
+        registration:        
+          facebook:
+            client-id: 792882571320683
+            client-secret: 3f5b2e8c205271541ea0e8dad469416f
+            scope:
+            - email
+            - public_profile 
     user:
       name: test
-      password: 1234   
+      password: 1234
+      
+         
 
 file: 
-  path: C:/src/instagram/src/main/resources/upload/
+  path: C:/lastwork/costagram/src/main/resources/upload/

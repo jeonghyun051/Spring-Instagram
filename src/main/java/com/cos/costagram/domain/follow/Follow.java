@@ -8,11 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.cos.costagram.domain.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,15 +27,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
+@Table(
+		name="follow",
+		uniqueConstraints={
+			@UniqueConstraint(
+				name = "follow_uk",
+				columnNames={"fromUserId","toUserId"}
+			)
+		}
+	) //중복으로 될수있는걸 막기
 public class Follow {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonIgnoreProperties({"images"})
 	@ManyToOne
 	@JoinColumn(name = "fromUserId")
 	private User fromUser; // ~~로 부터, 팔로우를 하는 애
 	
+	@JsonIgnoreProperties({"images"})
 	@ManyToOne
 	@JoinColumn(name = "toUserId")
 	private User toUser; // ~~를, 팔로우를 당하는 애
