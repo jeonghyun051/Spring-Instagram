@@ -35,8 +35,11 @@ public class ImageController {
 		return "image/feed";
 	}
 	
-	@GetMapping("image/explore")
-	public String explore() {
+	@GetMapping("/image/explore")
+	public String explore(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+		model.addAttribute("images", imageService.인기사진(principalDetails.getUser().getId()));
+
 		return "image/explore";
 	}
 	

@@ -17,28 +17,25 @@ document.querySelector("#subscribeBtn").onclick = (e) => {
 		// http 8080 없어도 되는 이유 같은 도메인을 호출하는거여서, 도메인이 다른걸 막을 때 cors정책이 걸림
 		url: `/user/${userId}/follow`,
 
-	}).done(res => {
+	}).done((res) => {
 
-		console.log(1, res);
+		//console.log(1, res);
 		$("#follow_list").empty();
 
 		res.data.forEach((u) => {
-			console.log(2, u)
 			let item = makeSubscribeInfo(u);
-			$("#follow_list").append(item);
+		  $("#follow_list").append(item);
 		});
 
 	}).fail(error => {
 		alert("오류" + error)
 	});
-
-
 };
 
 function makeSubscribeInfo(u) {
 	let item = `<div class="follower__item" id="follow-${u.userId}">`;
 	item += `<div class="follower__img">`;
-	item += `<img src="/images/profile.jpeg" alt="">`;
+	item += `<img src="/upload/${u.profileImageUrl}" alt=""  onerror="this.src='/images/common.jpg'"/>>`;
 	item += `</div>`;
 	item += `<div class="follower__text">`;
 	item += `<h2>${u.username}</h2>`;
@@ -159,3 +156,21 @@ document.querySelector(".modal-image").addEventListener("click", (e) => {
 	}
 }
 */
+
+
+// 회원정보 수정
+function update(userId){
+	event.preventDefault();
+	let data = $("#profile_setting").serialize();
+	console.log(data);
+
+	$.ajax({
+		type: "put",
+		url: "/user/"+userId,
+		data: data,
+		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		dataType: "json"
+	}).done(res=>{
+		location.href = "/user/"+userId
+	});
+}

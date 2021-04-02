@@ -30,6 +30,11 @@ public class ImageService {
 	@Value("${file.path}") // 팩토리 어노테이션 , 이제 부터 yml 파일에 접근 할 수 있음.
 	private String uploadFolder;
 	
+	@Transactional(readOnly = true)
+	public List<Image> 인기사진(int principalId){
+		return imageRepository.mExplore(principalId);
+	}
+	
 	public List<Image> 피드이미지(int principalId){
 		
 		//1. principalId로 내가 팔로우 하고 있는 사용자를 찾아야 됨. (한개이거나 컬렉션이거나)
