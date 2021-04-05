@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,13 +37,13 @@ public class ImageService {
 		return imageRepository.mExplore(principalId);
 	}
 	
-	public List<Image> 피드이미지(int principalId){
+	public Page<Image> 피드이미지(int principalId,Pageable pageable){
 		
 		//1. principalId로 내가 팔로우 하고 있는 사용자를 찾아야 됨. (한개이거나 컬렉션이거나)
 		//SELECT toUserId FROM follow where toUser=principalId
 		//그리고 애들이 가지고있는 이미지를 뿌려야함
 	
-		List<Image> images = imageRepository.mFollowFeed(principalId);
+		Page<Image> images = imageRepository.mFollowFeed(principalId,pageable);
 		
 		// 좋아요 하트 색깔 로직 + 좋아요 카운트 로직
 		images.forEach((image)->{
