@@ -1,24 +1,24 @@
-
 let page = 0;
+let principalId = $("#principal-id").val();
+let username = $("#principal-username").val();
 
-feedLoad();
 
-function feedLoad(){
-   // ajax로 Page<Image> 가져올 예정 (3개)
-   $.ajax({
-      type: "get",
-      url: `/image?page=${page}`,
-      dataType: "json"
-   }).done(res=>{
-	  console.log(1,res);
-      let images = res.data.content;
-      images.forEach((image)=>{
-         let feedBox = feedItem(image);
-         $("#feed_list").append(feedBox);
-      });
-   });
+function feedLoad() {
+  // ajax로 Page<Image> 가져올 예정 (3개)
+  $.ajax({
+    type: "get",
+    url: `/image?page=${page}`,
+    dataType: "json",
+  }).done((res) => {
+    let images = res.data.content;
+    images.forEach((image) => {
+      let feedBox = feedItem(image);
+      $("#feed_list").append(feedBox);
+    });
+  });
 }
 
+feedLoad();
 
 // 윈도우 스크롤 이벤트 익명함수
 $(window).scroll(() =>{
@@ -40,8 +40,8 @@ $(window).scroll(() =>{
 	
 });
 
-function feedItem(image){
-	let result = `
+function feedItem(image) {
+  let result = `
 <!--전체 리스트 아이템-->
 <div class="story-list__item">
 	<!--리스트 아이템 헤더영역-->
@@ -57,20 +57,19 @@ function feedItem(image){
 	<!--게시물 내용 + 댓글 영역-->
 	<div class="sl__item__contents">
 		<!-- 하트모양 버튼 박스 -->
-		<div class="sl__item__contents__icon"> ` ;
-	
-	if(image.likeState){
-		result += `<button onclick="likeOrUnLike(${image.id})">
+		<div class="sl__item__contents__icon"> `;
+
+  if (image.likeState) {
+    result += `<button onclick="likeOrUnLike(${image.id})">
 							<i class="fas fa-heart active" id="like_icon_${image.id}"></i>
 						</button>`;
-	}else{
-		result += `<button onclick="likeOrUnLike(${image.id})">
+  } else {
+    result += `<button onclick="likeOrUnLike(${image.id})">
 							<i class="far fa-heart" id="like_icon_${image.id}"></i>
 						</button>`;
-	}
+  }
 
-				
-	result += 	`	
+  result += `	
 		</div>
 		<!-- 하트모양 버튼 박스 end -->
 		<!--좋아요-->
@@ -79,13 +78,12 @@ function feedItem(image){
 		<!--태그박스-->
 		<div class="sl__item__contents__tags">
 			<p> `;
-	
-				image.tags.forEach((tag)=>{
-					result += `#${tag.name} `;
-				});
-				
-				
-	result += `			
+
+  image.tags.forEach((tag) => {
+    result += `#${tag.name} `;
+  });
+
+  result += `			
 			</p>
 		</div>
 		<!--태그박스end-->
@@ -96,21 +94,40 @@ function feedItem(image){
 		<!--게시글내용end-->
 		
 		<!-- 댓글 들어오는 박스 -->
-		<div>
-			<div class="sl__item__contents__comment">
-				
-			</div>
+		<div id="comment-list-${image.id}">
+		`;
+  
+  		image.comments.forEach((comment)=>{
+  			result += `	<div class="sl__item__contents__comment" id="comment-${comment.id}"">
+			    <p>
+			      <b>${comment.user.username} :</b>
+			      ${comment.content}
+			    </p>
+  				`;
+  			
+  			if(principalId == comment.user.id){
+  	  			result +=`
+  				    <button onClick="deleteComment(${comment.id})"><i class="fas fa-times"></i></button>
+  				`;
+  			}
+  			
+  			result += `
+			  </div>`;
+  		});
+  
+  		result += `
 		</div>
 		<!-- 댓글 들어오는 박스end -->
 		<!--댓글입력박스-->
 		<div class="sl__item__input">
-			<input type="text" placeholder="댓글 달기..." />
-			<button type="button" onClick="addComment(1, 'username')">게시</button>
+			<input type="text" placeholder="댓글 달기..." id="comment-${image.id}"/>
+			<button type="button" onClick="addComment(${image.id}, '${username}')">게시</button>
 		</div>
 		<!--댓글달기박스end-->
 	</div>
 </div>
 <!--전체 리스트 아이템end-->
 `;
-	return result;
+  return result;
 }
+

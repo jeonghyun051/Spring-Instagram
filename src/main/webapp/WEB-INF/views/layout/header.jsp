@@ -37,14 +37,25 @@
 </head>
 
 <body>
+	<input type="hidden" id="principal-id" value="${principal.user.id}"/>
+	<input type="hidden" id="principal-username" value="${principal.user.username}"/>
+	
 	<header class="header">
 		<div class="container">
-			<a href="/image/feed" class="logo"><img src="/images/logo.jpg" alt=""></a>
+			<a href="/image/feed" class="logo">
+				<img src="/images/logo.jpg" alt="">
+			</a>
 			<nav class="navi">
 				<ul class="navi-list">
-					<li class="navi-item"><a href="/image/feed"><i class="fas fa-home"></i></a></li>
-					<li class="navi-item"><a href="/image/explore"><i class="far fa-compass"></i></a></li>
-					<li class="navi-item"><a href="/user/${principal.user.id}"><i class="far fa-user"></i></a></li>
+					<li class="navi-item"><a href="/image/feed">
+							<i class="fas fa-home"></i>
+						</a></li>
+					<li class="navi-item"><a href="/image/explore">
+							<i class="far fa-compass"></i>
+						</a></li>
+					<li class="navi-item"><a href="/user/${principal.user.id}">
+							<i class="far fa-user"></i>
+						</a></li>
 				</ul>
 			</nav>
 		</div>

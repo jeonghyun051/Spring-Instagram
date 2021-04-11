@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.costagram.config.auth.PrincipalDetails;
+import com.cos.costagram.domain.comment.Comment;
 import com.cos.costagram.domain.image.Image;
+import com.cos.costagram.service.CommentService;
 import com.cos.costagram.service.ImageService;
 import com.cos.costagram.service.LikesService;
 import com.cos.costagram.web.dto.CMRespDto;
@@ -29,6 +32,7 @@ public class ImageController {
 
 	private final ImageService imageService;
 	private final LikesService likesService;
+	private final CommentService commentService;
 		
 		
 //	@GetMapping({"/","/image/feed"})
@@ -87,5 +91,15 @@ public class ImageController {
 	public @ResponseBody CMRespDto<?> unLike(@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable int imageId){
 		likesService.싫어요(imageId, principalDetails.getUser().getId());
 		return new CMRespDto<>(1, null);
+	}
+	
+	// 댓글로 받을 값 : imageId, content
+	@PostMapping("/image/{imageId}/comment")
+	public @ResponseBody CMRespDto<?> save(@PathVariable int imageId, @RequestBody String content, @AuthenticationPrincipal PrincipalDetails principalDetails){   // content, imageId, userId(세션)
+		System.out.println("진입함 ~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("content: " + content);
+		Comment commentEntity = commentService.댓글쓰기(principalDetails.getUser(), content, imageId);
+		
+		return new CMRespDto<>(1, commentEntity);
 	}
 }

@@ -12,7 +12,10 @@
 		<!--유저이미지-->
 		<div class="profile-left">
 			<div class="profile-img-wrap story-border" onclick="popup('.modal-image')">
-				<img src="/upload/${dto.user.profileImageUrl}" alt=""  onerror="this.src='/images/common.jpg'"/>
+				<form id="profile-image_form">
+					<input type="file" name="profileImageFile" style="display:none;" id="profile-image_input"/>
+				</form>
+				<img src="/upload/${dto.user.profileImageUrl}" alt=""  onerror="this.src='/images/common.jpg'" id="profile-image-url"/>
 				<svg viewbox="0 0 110 110">
                         <circle cx="55" cy="55" r="53" />
                     </svg>
@@ -35,21 +38,25 @@
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${dto.followState}">
-								<button class="cta blue" onclick="followOrUnFollowProfile(${dto.user.id})" id="follow_profile_btn">구독취소</button>
+								<button class="cta blue" onclick="followOrUnFollowProfile(${dto.user.id})"  id="follow_profile_btn">구독취소</button>
 							</c:when>
 							<c:otherwise>
 								<button class="cta" onclick="followOrUnFollowProfile(${dto.user.id})" id="follow_profile_btn">구독하기</button>
 							</c:otherwise>
 						</c:choose>
+
 					</c:otherwise>
 				</c:choose>
-
 
 			</div>
 			<div class="follow">
 				<ul>
-					<li><a href="">게시물<span>${dto.imageCount}</span></a></li>
-					<li><a href="" id="subscribeBtn">구독정보<span>${dto.followCount}</span></a></li>
+					<li><a href="">
+							게시물<span>${dto.imageCount}</span>
+						</a></li>
+					<li><a href="" id="subscribe_btn">
+							구독정보<span>${dto.followCount}</span>
+						</a></li>
 				</ul>
 			</div>
 			<div class="state">
@@ -72,14 +79,23 @@
 			<div class="tab-1-content-inner">
 
 				<!--아이템들-->
+
 				<c:forEach var="image" items="${dto.user.images}">
+				
 					<div class="img-box">
-						<a href=""><img src="/upload/${image.postImageUrl}" alt=""></a>
+						<a href="">
+							<img src="/upload/${image.postImageUrl}" alt="">
+						</a>
 						<div class="comment">
-							<a href="#a" class=""><i class="fas fa-heart"></i><span>${image.likeCount}</span></a>
+							<a href="#a" class="">
+								<i class="fas fa-heart"></i><span>${image.likeCount}</span>
+							</a>
 						</div>
 					</div>
+					
 				</c:forEach>
+
+
 
 				<!--아이템들end-->
 			</div>
@@ -90,7 +106,7 @@
 <!--로그아웃, 회원정보변경 모달-->
 <div class="modal-info">
 	<div class="modal">
-		<button onclick="location.href='/user/${principal.user.id}/profileSetting'" style="margin-top:50px">회원정보 변경</button>
+		<button onclick="location.href='/user/1/profileSetting'">회원정보 변경</button>
 		<button onclick="location.href='/logout'">로그아웃</button>
 		<button onclick="closePopup('.modal-info')">취소</button>
 	</div>
@@ -101,10 +117,11 @@
 <div class="modal-image">
 	<div class="modal">
 		<p>프로필 사진 바꾸기</p>
-		<button>사진 업로드</button>
+		<button onclick="profileImageUpload()">사진 업로드</button>
 		<button onclick="closePopup('.modal-image')">취소</button>
 	</div>
 </div>
+
 <!--프로필사진 바꾸기 모달end-->
 
 <!--팔로워 모달-->
@@ -121,21 +138,11 @@
 		<!--팔로워 헤더end-->
 
 		<!--팔로워 리스트-->
-		<div class="follower-list" id="follow_list"></div>
-
-		<!-- <div class="follower-list">
-			<div class="follower__item">
-				<div class="follower__img">
-					<img src="/images/profile.jpeg" alt="">
-				</div>
-				<div class="follower__text">
-					<h2>아이디</h2>
-				</div>
-				<div class="follower__btn">
-					<button onclick="clickFollow(this)">구독취소</button>
-				</div>
-			</div>
-		</div> -->
+		<div class="follower-list" id="follow_list">
+			
+			
+		</div>
+		
 		<!--팔로워 리스트end-->
 	</div>
 	<!--팔로워 박스end-->
