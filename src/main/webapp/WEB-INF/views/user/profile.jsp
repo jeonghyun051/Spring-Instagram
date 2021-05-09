@@ -106,7 +106,7 @@
 <!--로그아웃, 회원정보변경 모달-->
 <div class="modal-info">
 	<div class="modal">
-		<button onclick="location.href='/user/1/profileSetting'">회원정보 변경</button>
+		<button onclick="location.href='/user/1/profileSetting'" style="margin-top:50px">회원정보 변경</button>
 		<button onclick="location.href='/logout'">로그아웃</button>
 		<button onclick="closePopup('.modal-info')">취소</button>
 	</div>
