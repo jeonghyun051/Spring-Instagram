@@ -8,7 +8,7 @@
 - Oauth2
 
 ```xml
-        <dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
@@ -27,8 +27,8 @@
 			<version>1.2</version>
 		</dependency>
 
-        <!-- OAUTH2 -->
-        <dependency>
+       <!-- OAUTH2 -->
+       <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
